@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('chats','ChatController');
+
+Route::resource('friend','ChatFiendController');

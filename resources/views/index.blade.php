@@ -21,15 +21,12 @@
 
 @section('content')
   <div class="container">
-    <h1 class="page-header">
-        채팅
-    </h1>
     <div id="frame">
       <div id="sidepanel">
         <div id="profile">
           <div class="wrap">
             <img id="profile-img" src="/images/support.jpg" class="online" alt="" />
-            <p> 사용자 이름 </p>
+            <p> Name </p>
           </div>
         </div>
         <div id="search">
@@ -62,8 +59,10 @@
           </ul>
         </div>
         <div id="bottom-bar">
-          <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span> 채팅 추가 </span></button>
-          {{-- <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span> 설정 </span></button> --}}
+          <form method="post" action="{{ view('show') }}">
+            {!! csrf_field() !!}
+            <button type="submit" id="addcontact" class="btn btn-primary"> 채팅 추가 </button>
+          </form>
         </div>
       </div>
       <div class="content">

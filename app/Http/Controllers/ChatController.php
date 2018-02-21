@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\User;
-use DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\ChatRequest;
 
@@ -22,9 +21,8 @@ class ChatController extends Controller
     public function index()
     {
         $chats = Chat::orderby('created_at','asc')->get();
-        $users = DB::table('users')->get();
 
-        return view('index', compact('chats','users'));
+        return view('index', compact('chats'));
     }
 
     /**
@@ -59,9 +57,10 @@ class ChatController extends Controller
      * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function show(Chat $chat)
+    public function show(Chat $chat = null)
     {
-        //
+        $users = User::orderby('created_at','asc')->get();
+        return view('show', compact('users'));
     }
 
     /**
