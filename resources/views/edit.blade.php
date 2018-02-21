@@ -1,6 +1,4 @@
 @extends('layouts.app')
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
 <!-- Styles -->
 @section('css')
@@ -22,6 +20,18 @@
 
 @section('content')
   <div class="container">
-    MainPage
+    <h1 class="page-header">
+        title
+    </h1>
+
+    <form method="post" action="{{ route('chats.update'), $chat->id }}">
+        {!! csrf_field() !!}
+        {!! method_field('put') !!}
+
+        @include('parial.form')
+        <div class="form-group">
+            <button class="btn btn-primary"> 수정 </button>
+        </div>
+    </form>
   </div>
 @endsection

@@ -1,38 +1,35 @@
 @extends('layouts.app')
 
+<!-- Styles -->
 @section('css')
-	@pareant
+<style>
+    html, body {
+        background-color: #fff;
+        color: #636b6f;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 100;
+        height: 100vh;
+        margin: 0;
+    }
+</style>
 @stop
 
 @section('js')
-	@parent
+    @param
+
 @stop
 
 @section('content')
   <div class="container">
+    <h1 class="page-header">
+        채팅
+    </h1>
     <div id="frame">
       <div id="sidepanel">
         <div id="profile">
           <div class="wrap">
             <img id="profile-img" src="/images/support.jpg" class="online" alt="" />
             <p> 사용자 이름 </p>
-            <i class="fa fa-chevron-down expand-button" aria-hidden="true"></i>
-            <div id="status-options">
-              <ul>
-                <li id="status-online" class="active"><span class="status-circle"></span> <p>Online</p></li>
-                <li id="status-away"><span class="status-circle"></span> <p>Away</p></li>
-                <li id="status-busy"><span class="status-circle"></span> <p>Busy</p></li>
-                <li id="status-offline"><span class="status-circle"></span> <p>Offline</p></li>
-              </ul>
-            </div>
-            <div id="expanded">
-              <label for="twitter"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-              <input name="twitter" type="text" value="mikeross" />
-              <label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-              <input name="twitter" type="text" value="ross81" />
-              <label for="twitter"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-              <input name="twitter" type="text" value="mike.ross" />
-            </div>
           </div>
         </div>
         <div id="search">
@@ -66,13 +63,13 @@
         </div>
         <div id="bottom-bar">
           <button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span> 채팅 추가 </span></button>
-          <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span> 설정 </span></button>
+          {{-- <button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span> 설정 </span></button> --}}
         </div>
       </div>
       <div class="content">
         <div class="contact-profile">
           <img src="/images/support.jpg" alt="" />
-          <p>친구 이름 </p>
+          <p>친구  </p>
           <div class="social-media">
             <i class="fa fa-facebook" aria-hidden="true"></i>
             <i class="fa fa-twitter" aria-hidden="true"></i>
@@ -88,17 +85,22 @@
             <li class="replies">
               <p> 사용자가 쓴 글 </p>
             </li>
+            @foreach($chats as $chat)
+                <li class="replies">
+                    <p> {{ $chat->content }}
+                        {{-- <small> by {{ $chat->user->id }} </small> --}}
+                    </p>
+                </li>
+            @endforeach
           </ul>
         </div>
         <div class="message-input">
           <div class="wrap">
             <form method="post" action="{{ route('chats.store') }}">
               {!! csrf_field() !!}
-
               @include('partial.form')
-
               <div class="form-group">
-                <button type="submit" class="btn gtn-primary"> 저장 </button>
+                <button type="submit" class="btn gtn-primary"> 전송 </button>
               </div>
             </form>
           </div>

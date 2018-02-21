@@ -30,11 +30,13 @@ class User extends Authenticatable
     /* releation */
     public function chats()
     {
-        return $this->belongsToMany('App\Chat','chat_members')->withTimestamps()->withPivot('read','no_read');
+        return $this->hasMany(Chat::class);
     }
 
-    public function chatMessages()
+    //Helpsers
+
+    public function isAdmin()
     {
-        return $this->hasMany('App\ChatMessage');
+        return $this->id === true;
     }
 }

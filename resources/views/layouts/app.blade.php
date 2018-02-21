@@ -29,13 +29,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto navbar-brand">
+                    <ul class="navbar-nav mr-auto navbar-brand navbar-left">
                         <a href="{{ url('/') }}" style="padding-right: 10px;"> Main </a>
-                        <a href="{{ url('/home') }}"> 채팅하기 </a>
+                        <a href="{{ url('/chats') }}"> Chatting </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto top-menu-nav nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <ul class="navbar-nav ml-auto navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">로그인</a></li>
@@ -43,7 +43,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"

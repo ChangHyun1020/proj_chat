@@ -22,6 +22,17 @@
 
 @section('content')
   <div class="container">
-    MainPage
+    <h1 class="page-header">
+        create
+    </h1>
+    <form method="post" action="{{ route('chats.store') }}">
+        {!! csrf_field() !!}
+
+        @include('partial.form')
+
+        <div class="form-group">
+            <button type="submit" class="btn gtn-primary"> 저장 </button>
+        </div>
+    </form>
   </div>
 @endsection

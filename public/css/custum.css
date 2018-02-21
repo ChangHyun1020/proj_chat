@@ -1,3 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+* {
+	font-family: 'Nanum Gothic'
+}
+
 #frame {
 	width: 95%;
 	min-width: 360px;

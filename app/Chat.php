@@ -6,20 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chat extends Model
 {
-    protected $table = 'chats';
+    protected $fillable = [
+    	'content',
+    ];
 
-    public function chatable()
+    public function user()
     {
-    	return $this->morphTo();
-    }
-
-    public function messages()
-    {
-    	return $this->hasMany('App\ChatMessage');
-    }
-
-    public function members()
-    {
-    	return $this->belongsToMany('App\User','chat_members')->withTimestamps();
+    	return $this->belongsTo(User::class);
     }
 }
