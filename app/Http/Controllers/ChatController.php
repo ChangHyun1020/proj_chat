@@ -46,9 +46,7 @@ class ChatController extends Controller
     {
         $user = $request->user();
 
-        $chat = $user->chats()->create($request->all());
-
-        return redirect(route('chats.index'));
+        $chat = $user->chats()->create($request->all())->save();
     }
 
     /**
@@ -57,10 +55,10 @@ class ChatController extends Controller
      * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function show(Chat $chat = null)
+    public function show(Chat $chat)
     {
-        $users = User::orderby('created_at','asc')->get();
-        return view('show', compact('users'));
+        // $users = User::orderby('created_at','asc')->get();
+        // return view('show', compact('users'));
     }
 
     /**

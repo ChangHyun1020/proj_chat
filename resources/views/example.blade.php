@@ -974,3 +974,9 @@ WhatsApp.Model.register(WhatsApp.View, WhatsApp.Ctrl);
     </div>
   </div>
 @endsection
+
+        // $.ajax({
+        //   url:'{{url("chats/add")}}',
+        //   type:'post',
+        //   data:{_token:'{{csrf_token()}}', msg:msg},
+        // });

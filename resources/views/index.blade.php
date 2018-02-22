@@ -2,6 +2,7 @@
 
 <!-- Styles -->
 @section('css')
+  @parant
 <style>
     html, body {
         background-color: #fff;
@@ -15,8 +16,23 @@
 @stop
 
 @section('js')
-    @param
+    @parant
+  <script type="text/javascript">
+    $(document).on('keydown','.send_chat', function(e)
+    {
+      var msg = $(this).val();
+      var element = $(this);
 
+      if (e.keyCode == 13 && !e.shiftKey) {
+        $('#chatlist').append(
+          '<li class="replies">' +
+          '<p>' + msg + '</p>' +
+          '</li>');
+        element.val(' ');
+      }
+
+    });
+  </script>
 @stop
 
 @section('content')
@@ -80,10 +96,6 @@
             <li class="sent">
               <p> 친구가 보낸 글 </p>
             </li>
-
-            <li class="replies">
-              <p> 사용자가 쓴 글 </p>
-            </li>
             @foreach($chats as $chat)
                 <li class="replies">
                     <p> {{ $chat->content }}
@@ -95,13 +107,10 @@
         </div>
         <div class="message-input">
           <div class="wrap">
-            <form method="post" action="{{ route('chats.store') }}">
-              {!! csrf_field() !!}
-              @include('partial.form')
-              <div class="form-group">
-                <button type="submit" class="btn gtn-primary"> 전송 </button>
-              </div>
-            </form>
+            <div class="form-group">
+                <input type="text" name="content" id="content" class="form-controller send_chat" placeholder="메시지 입력" />
+                <button type="submit" class="btn btn-primary "> 전송 </button>
+            </div>
           </div>
         </div>
       </div>
