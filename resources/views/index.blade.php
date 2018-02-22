@@ -91,10 +91,13 @@
         </div>
         <div class="message-input">
           <div class="wrap">
-            <div class="form-group">
-                <input type="text" name="content" id="content" class="form-controller send_chat" placeholder="메시지 입력" />
-                <button type="submit" class="btn btn-primary" onclick="submit()"> 전송 </button>
-            </div>
+            <form method="post" action="{{ route('chats.store') }}">
+              {!! csrf_field() !!}
+              <div class="form-group">
+                  <input type="text" name="content" id="content" class="form-controller send_chat" placeholder="메시지 입력" />
+                  <button type="submit" class="btn btn-primary"> 전송 </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

@@ -54,14 +54,14 @@
               <p> 친구가 보낸 글 </p>
             </li>
 
-            <li class="replies">
+            <li class="sent">
               <p> 내가 쓴 글 </p>
             </li>
 
             @foreach($chats as $chat)
-                <li class="replies">
+                <li class="sent">
                     <p> {{ $chat->content }}
-                        {{-- <small> by {{ $chat->user->id }} </small> --}}
+                        <small> by {{ $chat->user->id }} </small>
                     </p>
                 </li>
             @endforeach
@@ -71,7 +71,7 @@
           <div class="wrap">
             <div class="form-group">
                 <input type="text" name="content" id="content" class="form-controller send_chat" placeholder="메시지 입력" />
-                <button type="submit" class="btn btn-primary" onclick="submit()"> 전송 </button>
+                <button type="submit" class="btn btn-primary btn_send_chat"> 전송 </button>
             </div>
           </div>
         </div>
@@ -79,19 +79,16 @@
     </div>
   </div>
 
-<!--   <script type="text/javascript">
-
-    $(document).on('keydown','.send_chat', function(e) {
-      var msg = $(this).val();
-      var element = $(this);
-
-      if (e.keyCode == 13 && !e.shiftKey) {
-        $('.chatlist').append(
-          '<li class="replies">' +
-          '<p>' + msg + '</p>' +
-          '</li>');
-        element.val(' ');
-      }
-    });
-  </script> -->
+  <script type="text/javascript">
+  	$.(document).on(function(){
+  		$(".btn_send_chat").click(function(){
+  			var msg = $('.send_chat').val();
+  			$('.chatlist').append(
+  				'<li class="sent">' +
+  				'<p>' + msg + '</p>' +
+  				'</li>');
+  			msg.val(' ');
+  		});
+  	});
+  </script>
 @endsection

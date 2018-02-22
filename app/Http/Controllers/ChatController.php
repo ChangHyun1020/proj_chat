@@ -52,7 +52,8 @@ class ChatController extends Controller
     {
         $user = $request->user();
 
-        $chat = $user->chats()->create($request->all())->save();
+        $chat = $user->chats()->create($request->all());
+        return redirect(route('chats.index'));
     }
 
     /**
