@@ -20,5 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('chats','ChatController');
+Route::post('chats/save','ChatController@save')->name('chats/save');
 
-Route::resource('friend','ChatFiendController');
+
+Route::get('messages', 'MessageController@fetch');
+Route::post('messages','MessageController@sentMessage');

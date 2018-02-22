@@ -36,6 +36,12 @@ class ChatController extends Controller
         return view('create',compact('chat'));
     }
 
+    public function save(Request $request) {
+        $saveChat = new Chat;
+        $saveChat->content = $request->content;
+        $saveChat->save();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

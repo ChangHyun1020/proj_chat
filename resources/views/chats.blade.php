@@ -29,35 +29,12 @@
             <p> Name </p>
           </div>
         </div>
+
         <div id="search">
           <label for=""><i class="fa fa-search" aria-hidden="true"></i></label>
           <input type="text" placeholder="검색" />
         </div>
-        <div id="contacts">
-          <!-- <ul>
-            <li class="contact">
-              <div class="wrap">
-                <span class="contact-status online"></span>
-                <img src="/images/support.jpg" alt="" />
-                <div class="meta">
-                  <p class="name"> 친구 1 </p>
-                  <p class="preview"> 메시지 1 </p>
-                </div>
-              </div>
-            </li>
 
-            <li class="contact active">
-              <div class="wrap">
-                <span class="contact-status busy"></span>
-                <img src="/images/support.jpg" alt="" />
-                <div class="meta">
-                  <p class="name">친구 2</p>
-                  <p class="preview"> 메시지 2 </p>
-                </div>
-              </div>
-            </li>
-          </ul> -->
-        </div>
         <div id="bottom-bar">
           {{-- <form method="post" action="{{ view('show') }}"> --}}
             {!! csrf_field() !!}
@@ -65,6 +42,7 @@
           {{-- </form> --}}
         </div>
       </div>
+
       <div class="content">
         <div class="contact-profile">
           <img src="/images/support.jpg" alt="" />
@@ -101,7 +79,7 @@
     </div>
   </div>
 
-  <script type="text/javascript">
+<!--   <script type="text/javascript">
 
     $(document).on('keydown','.send_chat', function(e) {
       var msg = $(this).val();
@@ -115,5 +93,5 @@
         element.val(' ');
       }
     });
-  </script>
+  </script> -->
 @endsection
